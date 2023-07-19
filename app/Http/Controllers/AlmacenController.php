@@ -14,11 +14,12 @@ public function APIinsertoAlmacen(Request $request)
     {
                  
         $almacen = new Almacen;              
-        $almacen->direccion = $request->input('direccion');
+        $almacen->nombre = $request->input('nombre');
+        $almacen->calle = $request->input('calle');
+        $almacen->numero = $request->input('numero');
         $almacen->ciudad = $request->input('ciudad');
         $almacen->latitud = $request->input('latitud');
         $almacen->longitud = $request->input('longitud');
-        $almacen->telefono = $request->input('telefono');
         $almacen->save();
 
         return $almacen;
@@ -50,11 +51,12 @@ public function APIlistarAlmacen(Request $request){
 public function APIModificarAlmacen(Request $request, $idalmacen){
 
         $almacen = Almacen::findOrFail($idalmacen);        
-        $almacen->direccion = $request->input('direccion');
+        $almacen->nombre = $request->input('nombre');
+        $almacen->calle = $request->input('calle');
+        $almacen->numero = $request->input('numero');
         $almacen->ciudad = $request->input('ciudad');
         $almacen->latitud = $request->input('latitud');
         $almacen->longitud = $request->input('longitud');
-        $almacen->telefono = $request->input('telefono');
 
         $almacen -> save();
         return $almacen;
