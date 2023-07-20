@@ -16,6 +16,7 @@ class Autenticacion
    $response = Http::withHeaders($tokenHeader) -> get("http://127.0.0.1:8001/api/validate");
    if($response -> successful() && $response -> body() != "")
          return $next($request);
-   return response(["message" => "No autorizado"], 403);
+  return response(["message" => "No autorizado"], 403);
+  
  }
 }

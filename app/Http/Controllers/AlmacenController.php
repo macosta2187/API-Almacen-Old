@@ -22,7 +22,9 @@ public function APIinsertoAlmacen(Request $request)
         $almacen->longitud = $request->input('longitud');
         $almacen->save();
 
-        return $almacen;
+       
+       return response()->json(['message' => 'Almacén creado exitosamente'], 200);
+      
 
       }
        
@@ -46,6 +48,8 @@ public function APIlistarAlmacen(Request $request){
     $almacen = Almacen::all();
     return response()->json($almacen);
     }
+
+    
 
 
 public function APIModificarAlmacen(Request $request, $idalmacen){
