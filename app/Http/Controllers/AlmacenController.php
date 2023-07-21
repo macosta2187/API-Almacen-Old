@@ -63,7 +63,7 @@ public function APIModificarAlmacen(Request $request, $idalmacen){
         $almacen->longitud = $request->input('longitud');
 
         $almacen -> save();
-        return $almacen;
+        return response()->json($almacen);
 
     }
 
