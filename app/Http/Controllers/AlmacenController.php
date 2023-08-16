@@ -10,7 +10,7 @@ class AlmacenController extends Controller
 {
     
 
-public function APIinsertoAlmacen(Request $request)
+public function Insertar(Request $request)
     {
                  
         $almacen = new Almacen;              
@@ -29,7 +29,7 @@ public function APIinsertoAlmacen(Request $request)
       }
        
 
-public function APIEliminarAlmacen(Request $request,$id){
+public function Eliminar(Request $request,$id){
 
         $almacen = Almacen::find($id);
     
@@ -43,7 +43,7 @@ public function APIEliminarAlmacen(Request $request,$id){
   
 
 
-public function APIlistarAlmacen(Request $request){  
+public function Listar(Request $request){  
        
     $almacen = Almacen::all();
     return response()->json($almacen);
@@ -52,7 +52,7 @@ public function APIlistarAlmacen(Request $request){
     
 
 
-public function APIModificarAlmacen(Request $request, $idalmacen){
+public function Modificar(Request $request, $idalmacen){
 
         $almacen = Almacen::findOrFail($idalmacen);        
         $almacen->nombre = $request->input('nombre');
