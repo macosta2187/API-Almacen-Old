@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Almacen;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
 class AlmacenController extends Controller
 {
-    
 
-public function Insertar(Request $request)
+    public function Insertar(Request $request)
     {
-                 
-        $almacen = new Almacen;              
+
+        $almacen = new Almacen;
         $almacen->nombre = $request->input('nombre');
         $almacen->calle = $request->input('calle');
         $almacen->numero = $request->input('numero');
@@ -22,39 +20,34 @@ public function Insertar(Request $request)
         $almacen->longitud = $request->input('longitud');
         $almacen->save();
 
-       
-       return response()->json(['message' => 'Almacén creado exitosamente'], 200);
-      
+        return response()->json(['message' => 'Almacén creado exitosamente'], 200);
 
-      }
-       
+    }
 
-public function Eliminar(Request $request,$id){
+    public function Eliminar(Request $request, $id)
+    {
 
         $almacen = Almacen::find($id);
-    
-        if ($almacen) {       
+
+        if ($almacen) {
             $almacen->delete();
             return response()->json(['error' => 'El almacén esta borrado'], 200);
         }
-    
+
         return response()->json(['error' => 'El almacén no existe'], 404);
     }
-  
 
+    public function Listar(Request $request)
+    {
 
-public function Listar(Request $request){  
-       
-    $almacen = Almacen::all();
-    return response()->json($almacen);
+        $almacen = Almacen::all();
+        return response()->json($almacen);
     }
 
-    
+    public function Actualizar(Request $request, $idalmacen)
+    {
 
-
-public function Modificar(Request $request, $idalmacen){
-
-        $almacen = Almacen::findOrFail($idalmacen);        
+        $almacen = Almacen::findOrFail($idalmacen);
         $almacen->nombre = $request->input('nombre');
         $almacen->calle = $request->input('calle');
         $almacen->numero = $request->input('numero');
@@ -62,7 +55,7 @@ public function Modificar(Request $request, $idalmacen){
         $almacen->latitud = $request->input('latitud');
         $almacen->longitud = $request->input('longitud');
 
-        $almacen -> save();
+        $almacen->save();
         return response()->json($almacen);
 
     }
